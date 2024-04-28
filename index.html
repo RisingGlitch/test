@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redirect Page</title>
+<script>
+    // Function to redirect to the entered URL
+    function redirectToUrl() {
+        var url = document.getElementById("urlInput").value;
+        if (isValidUrl(url)) {
+            window.location.href = url;
+        } else {
+            alert("Please enter a valid URL.");
+        }
+    }
+
+    // Function to check if a string is a valid URL
+    function isValidUrl(string) {
+        try {
+            new URL(string);
+            return true;
+        } catch (_) {
+            return false;  
+        }
+    }
+
+    // Event listener for pressing Enter key
+    document.getElementById("urlInput").addEventListener("keyup", function(event) {
+        if (event.key === "Enter") {
+            redirectToUrl();
+        }
+    });
+</script>
+</head>
+<body>
+    <h1>Enter URL to Redirect:</h1>
+    <input type="text" id="urlInput"
